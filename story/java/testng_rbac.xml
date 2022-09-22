@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="rbac" parallel="methods" thread-count="1" verbose="1">
+
+    <!--thriftserver地址，不需要写jdbc头，例：192.168.30.36:10000-->
+    <parameter name="HIVEADDRESS" value="${HIVEADDRESS}"/>
+    <!--MySQL地址，不需要写jdbc头，例：192.168.30.36:3306-->
+    <parameter name="MYSQLADDRESS" value="${MYSQLADDRESS}"/>
+    <!--rbac、mysql管理员用户，例：sdbadmin-->
+    <parameter name="ROOTUSER" value="${ROOTUSER}"/>
+    <!--密码，例：sdbadmin-->
+    <parameter name="ROOTPASSWORD" value="${ROOTPASSWORD}"/>
+    <!--测试所需的S3桶名字，例：bucket1-->
+    <parameter name="S3BUCKET" value="${S3BUCKET}"></parameter>
+
+    <test name="rbac">
+        <packages>
+            <package name="com.sequoiadp.rbac.ownership"></package>
+            <package name="com.sequoiadp.rbac.group"></package>
+            <package name="com.sequoiadp.rbac.show"/>
+            <package name="com.sequoiadp.rbac.grant.select"></package>
+        </packages>
+    </test>
+
+</suite>
